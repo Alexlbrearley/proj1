@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-/* ---This function will take a variable x to rotate the value for each character---
- -----------------------------------------------------------------------------------*/
+/* ---This function will take a variable x to rotate the value for each character---*/
 void encryptRotation(int x, char *strng);
 
-/*---This function will take encrypted text and the known value it was rotated by, to decode---
- ---------------------------------------------------------------------------------------------*/
+/*---This function will take encrypted text and the known value it was rotated by, to decode---*/
 void decryptRotation(int x, char *strng);
 
 /*---main---*/
@@ -29,6 +27,7 @@ int main()
 }
 
 /*---functions---*/
+
 void encryptRotation(int x, char *strng)
 {
     for(int i = 0; i < 5; i++)
