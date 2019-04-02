@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-/* ---This function will take a variable x to rotate the value for each character---*/
+/* ---This function takes a variable x to rotate the value for each character---*/
 void encryptRotation(int x, char *strng);
 
-/*---This function will take encrypted text and the known value it was rotated by, to decode---*/
+/*---This function takes encrypted text and the known value it was rotated by to decode for original text---*/
 void decryptRotation(int x, char *strng);
 
 /*---main---*/
 int main()
 {
     int x;
-    char strng[100];
+    char strng[1024];
     printf("Enter a word to encrypt:");
     scanf("%s", strng);
     
