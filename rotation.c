@@ -30,7 +30,7 @@ int main()
 
 void encryptRotation(int x, char *strng)
 {
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 1024; i++)
     {
         strng[i] = strng[i] + x;
     }
@@ -38,7 +38,7 @@ void encryptRotation(int x, char *strng)
 
 void decryptRotation(int x, char *strng)
 {
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 1024; i++)
     {
         strng[i] = strng[i] - x;
     }
