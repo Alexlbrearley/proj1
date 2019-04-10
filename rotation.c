@@ -45,12 +45,14 @@ void encryptRotation(int x, char *strng)
 {
     for(int i = 0; i < 30; i++)
     {
-        strng[i] = strng[i] + x;
+            strng[i] = strng[i] - x;
     }
     for(int i=0; i<30; i++)
     {
         if (strng[i] > 90)
             strng[i] = strng[i] - 26;
+        if (strng[i] < 65)
+            strng[i] = strng[i] + 26;
     }
 }
 
@@ -58,11 +60,13 @@ void decryptRotation(int x, char *strng)
 {
     for(int i = 0; i < 30; i++)
     {
-        strng[i] = strng[i] - x;
+            strng[i] = strng[i] + x;
     }
     for(int i=0; i<30; i++)
     {
-        if (strng[i] < 65)
+        if (strng[i] > 90)
+            strng[i] = strng[i] - 26;
+        if ( strng[i] < 65)
             strng[i] = strng[i] + 26;
     }
 }
