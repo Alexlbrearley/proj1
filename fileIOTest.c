@@ -16,13 +16,18 @@ int main()
     char strng[30];
     
     FILE *input;
-    input = fopen("input.txt", "r");
+    input = fopen("input.txt", "r+");
+    if (input == NULL)
+    {
+        perror("fopen()");
+        return 0;
+    }
+    printf("File contians: %s\n", input);
+
+    //fscanf("%s", strng);
     
-    scanf("%s", strng);
+    //textCaps(input);
     
-    textCaps(strng);
-    
-    printf("File contians: %s\n", strng);
     
     printf("Please choose an option:\n1: Encrypt\n2: Decrypt\n");
     scanf("%d", &y);
