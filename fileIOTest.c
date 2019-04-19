@@ -7,7 +7,7 @@ void textCaps(char *strng);
 /*---Main---*/
 int main()
 {
-    int x, y, i;
+    int i;
     char strng[30];
     char ch;
     FILE *in, *out;
@@ -17,14 +17,21 @@ int main()
     scanf("%s", inputName);
     
     
-    in = fopen(inputName, "r+");
+    in = fopen(inputName, "r");
     if (in == NULL)         //prints user friendly error message
     {
-        perror("Error : fopen()");
+        perror("ERROR : fopen()");
         return 0;
     }
     
-    for (i=0; i<30; i++)
+    out = fopen("output.txt", "w");
+    if (in == NULL)         //prints user friendly error message
+    {
+        perror("ERROR : fopen()");
+        return 0;
+    }
+    
+    for (i=0; i<30; i++) //reads file into strng (only single words, stops at first white space)
     {
         if ( !(feof(in)) )
         {
@@ -35,17 +42,11 @@ int main()
     printf("File contains: %s\n", strng); //original file contents
     
     textCaps(strng); //convert to all caps
-    fprintf(in, "%s", strng);
+    
+    fprintf(out, "%s", strng); //prints strng to output file
     for (i=0; i<30; i++)
-    {
-        if ( !(feof(in)) )
-        {
-            fscanf(in, "%c", &ch);
-            strng[i] = ch;
-        }
-    }
-    printf("File contains: %s\n", strng);
 
+    return 0;
 }
 
 /*---Functions---*/
