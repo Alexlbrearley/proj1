@@ -33,11 +33,10 @@ int main()
     
     for (i=0; i<30; i++) //reads file into strng (only single words, stops at first white space)
     {
-        if ( !(feof(in)) )
-        {
-            fscanf(in, "%c", &ch);
-            strng[i] = ch;
-        }
+        fscanf(in, "%c", &ch); 
+        if ( (feof(in)) ) //not end of file
+            break;
+        strng[i] = ch;
     }
     printf("File contains: %s\n", strng); //original file contents
     
@@ -46,6 +45,8 @@ int main()
     fprintf(out, "%s", strng); //prints strng to output file
     for (i=0; i<30; i++)
 
+    fclose(in);
+    fclose(out);
     return 0;
 }
 
@@ -54,7 +55,7 @@ void textCaps(char *strng)
 {
     for(int i=0; i<30; i++)
     {
-        if (strng[i] > 'a' && strng[i] < 'z')
+        if (strng[i] >= 'a' && strng[i] <= 'z')
             strng[i] = strng[i] - 32;
     }
 }
