@@ -1,1 +1,1 @@
-Input file test
+THIS IS A TEST
