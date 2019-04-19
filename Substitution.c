@@ -5,10 +5,8 @@
 int main()
 {
     int i, l;
-    char word[100];
     char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char key[] = "QWERTYUIOPLKJHGFDSAZXCVBNM";
-    char value[26];
     char strng[] = "WHAT IS GOING ON?!";
     
     
