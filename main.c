@@ -24,7 +24,7 @@ int main()
     printf("To use this program, a file containing a message to encrypt or decrypt needs to be opened.\n\n");
 /*---File I/O---*/
     int i;
-    char message[100];
+    char message[1000];
     char ch;
     FILE *in, *out, *key;
     char inputName[30];
@@ -42,7 +42,7 @@ int main()
         perror("ERROR : fopen()");
         return 0;
     }
-    for (i=0; i<100; i++) //reads file into strng
+    for (i=0; i<1000; i++) //reads file into strng
     {
         fscanf(in, "%c", &ch);
         if ( (feof(in)) ) //not end of file
@@ -58,9 +58,10 @@ int main()
 /*---Rotation Program---*/
     if (c == 1)
     {
+        int q;
         printf("\nEnter 1 to encrypt or 2 to decrypt: ");
-        scanf("%d", &c);
-        if (c == 1) //encrypt rotation
+        scanf("%d", &q);
+        if (q == 1) //encrypt rotation
         {
             printf("\nEnter a rotation amount: ");
             scanf("%d", &x);
@@ -75,7 +76,7 @@ int main()
                 fprintf(in, "%s", message);
             }
         }
-        else if (c == 2) //decrypt rotation
+        else if (q == 2) //decrypt rotation
         {
             printf("\nEnter the rotation amount to decrypt: ");
             scanf("%d", &x);
@@ -90,12 +91,11 @@ int main()
                 fprintf(in, "%s", message);
             }
         }
-        else
-            printf("%d is not valid", c);
     }
 /*---Substitution Program---*/
     else if (c == 2)
     {
+        int q;
         char keyStrng[25];
         key = fopen("key.txt", "r");
         if (key == NULL)         //prints user friendly error message
@@ -114,12 +114,13 @@ int main()
         
         printf("\nFound key: %s\n", keyStrng);
         printf("\nEnter 1 to encrypt or 2 to decrypt: ");
-        scanf("%d", &c);
-        if(c == 1)
+        scanf("%d", &q);
+        if(q == 1)
         {
             encryptSubstitution(keyStrng, message);
+            fprintf(out, "%s", message);
             printf("\nThe encrypted message is: %s\n", message);
-            printf("\nWould you like to overwrite %s? with the encrypted text y or n: ", inputName); //option to overwrite the input file so that the decrypt function can be tested
+            printf("\nWould you like to overwrite %s? with the encrypted text? y or n: ", inputName); //option to overwrite the input file so that the decrypt function can be tested
             scanf("%s", &z);
             if (z == 'y')
             {
@@ -127,9 +128,10 @@ int main()
                 fprintf(in, "%s", message);
             }
         }
-        else if(c == 2)
+        else if(q == 2)
         {
             decryptSubstitution(keyStrng, message);
+            fprintf(out, "%s", message);
             printf("\nThe encrypted message is: %s\n", message);
             printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file
             scanf("%s", &z);
@@ -139,6 +141,7 @@ int main()
                 fprintf(in, "%s", message);
             }
         }
+        fclose(key);
     }
 /*---newprogram---*/
     else if (c==3)
@@ -151,7 +154,6 @@ int main()
 /*---End Main---*/
     fclose(in);
     fclose(out);
-    fclose(key);
     printf("\n\n/-------------------------------/\n");
     printf("/------------Goodbye!-----------/");
     printf("\n/-------------------------------/\n\n");
@@ -161,7 +163,7 @@ int main()
 /*---Functions---*/
 void textCaps(char *strng)
 {
-    for(int i=0; i<100; i++)
+    for(int i=0; i<1000; i++)
     {
         if (strng[i] >= 'a' && strng[i] <= 'z')
             strng[i] = strng[i] - 32;
@@ -170,14 +172,14 @@ void textCaps(char *strng)
 //------------------------------------------------------
 void encryptRotation(int x, char *strng)
 {
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 1000; i++)
     {
         if (strng[i] >= 65 && strng[i] <=90)
         {
             strng[i] = strng[i] - x;
         }
     }
-    for(int i=0; i<100; i++)
+    for(int i=0; i<1000; i++)
     {
         if (strng[i] < 65 && strng[i] >= 65-x)
             strng[i] = strng[i] + 26;
@@ -186,14 +188,14 @@ void encryptRotation(int x, char *strng)
 //------------------------------------------------------
 void decryptRotation(int x, char *strng)
 {
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 1000; i++)
     {
         if (strng[i] >= 65 && strng[i] <=90)
         {
             strng[i] = strng[i] + x;
         }
     }
-    for(int i=0; i<100; i++)
+    for(int i=0; i<1000; i++)
     {
         if (strng[i] > 90 && strng[i] <= 90+x)
             strng[i] = strng[i] - 26;
