@@ -63,7 +63,7 @@ int main()
         scanf("%d", &q);
         if (q == 1) //encrypt rotation
         {
-            printf("\nEnter a rotation amount: ");
+            printf("\nEnter a rotation amount between 1 and 26: ");
             scanf("%d", &x);
             encryptRotation(x, message);
             printf("\nThe result is: %s\n", message);
@@ -78,7 +78,7 @@ int main()
         }
         else if (q == 2) //decrypt rotation
         {
-            printf("\nEnter the rotation amount to decrypt: ");
+            printf("\nEnter the rotation amount between 1 and 26 that the text was encrypted with: ");
             scanf("%d", &x);
             decryptRotation(x, message);
             printf("\nThe result is: %s\n", message);
@@ -177,12 +177,9 @@ void encryptRotation(int x, char *strng)
         if (strng[i] >= 65 && strng[i] <=90)
         {
             strng[i] = strng[i] - x;
+            if (strng[i] < 65 && strng[i] >= 65-x)
+               strng[i] = strng[i] + 26;
         }
-    }
-    for(int i=0; i<1000; i++)
-    {
-        if (strng[i] < 65 && strng[i] >= 65-x)
-            strng[i] = strng[i] + 26;
     }
 }
 //------------------------------------------------------
@@ -193,12 +190,9 @@ void decryptRotation(int x, char *strng)
         if (strng[i] >= 65 && strng[i] <=90)
         {
             strng[i] = strng[i] + x;
+            if (strng[i] > 90 && strng[i] <= 90+x)
+                strng[i] = strng[i] - 26;
         }
-    }
-    for(int i=0; i<1000; i++)
-    {
-        if (strng[i] > 90 && strng[i] <= 90+x)
-            strng[i] = strng[i] - 26;
     }
 }
 //------------------------------------------------------
