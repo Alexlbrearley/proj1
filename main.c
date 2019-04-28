@@ -65,30 +65,44 @@ int main()
         {
             printf("\nEnter a rotation amount between 1 and 26: ");
             scanf("%d", &x);
-            encryptRotation(x, message);
-            printf("\nThe result is: %s\n", message);
-            fprintf(out, "%s", message);
-            printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file so that the decrypt function can be tested
-            scanf("%s", &z);
-            if (z == 'y')
+            if (x < 1 || x > 26)
             {
-                in = fopen(inputName, "w");
-                fprintf(in, "%s", message);
+                printf("\n ERROR: The rotation must be between 1 and 26, you entered %d\n", x);
+            }
+            else
+            {
+                encryptRotation(x, message);
+                printf("\nThe result is: %s\n", message);
+                fprintf(out, "%s", message);
+                printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file so that the decrypt function can be tested
+                scanf("%s", &z);
+                if (z == 'y')
+                {
+                    in = fopen(inputName, "w");
+                    fprintf(in, "%s", message);
+                }
             }
         }
         else if (q == 2) //decrypt rotation
         {
             printf("\nEnter the rotation amount between 1 and 26 that the text was encrypted with: ");
             scanf("%d", &x);
-            decryptRotation(x, message);
-            printf("\nThe result is: %s\n", message);
-            fprintf(out, "%s", message);
-            printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file
-            scanf("%s", &z);
-            if (z == 'y')
+            if (x < 1 || x > 26)
             {
-                in = fopen(inputName, "w");
-                fprintf(in, "%s", message);
+                printf("\n ERROR: The rotation must be between 1 and 26, you entered %d\n", x);
+            }
+            else
+            {
+                decryptRotation(x, message);
+                printf("\nThe result is: %s\n", message);
+                fprintf(out, "%s", message);
+                printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file
+                scanf("%s", &z);
+                if (z == 'y')
+                {
+                    in = fopen(inputName, "w");
+                    fprintf(in, "%s", message);
+                }
             }
         }
     }
