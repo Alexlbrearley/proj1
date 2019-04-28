@@ -17,8 +17,8 @@ int main()
     char ch;
     FILE *in, *out;
     //char inputName[30];
-   // printf("Enter input file name: ");
-   // scanf("%s", inputName);
+    // printf("Enter input file name: ");
+    // scanf("%s", inputName);
     in = fopen("input.txt", "r");
     if (in == NULL)         //prints user friendly error message
     {
@@ -42,7 +42,7 @@ int main()
     textCaps(message); //convert to all caps
     printf("\nFile contains: %s", message); //original file contents
     printf("\n/-------------------------------/\n");
-
+    
     //---------------------------------------------------------------
     for (i=0; i<1000; i++)
     {
@@ -50,58 +50,58 @@ int main()
     }
     int a, b, c, d, e, f;
     int counter = 0;
-        for (i=0; i<1000; i++)
+    for (i=0; i<1000; i++)
+    {
+        if (counter < 2)
         {
-            if (counter < 2)
+            if (constantMessage[i] >= 65 && constantMessage[i] <=90)
             {
-                if (constantMessage[i] >= 65 && constantMessage[i] <=90)
+                if (constantMessage[i] == constantMessage[(i)+1])
                 {
-                    if (constantMessage[i] == constantMessage[(i)+1])
-                    {
-                        a = 76 - constantMessage[i]; //l
-                        b = 82 - constantMessage[i]; //r
-                        c = 84 - constantMessage[i]; //t
-                        d = 79 - constantMessage[i]; //o
-                        e = 69 - constantMessage[i]; //e
-                        f = 83 - constantMessage[i]; //s
+                    a = 76 - constantMessage[i]; //l
+                    b = 82 - constantMessage[i]; //r
+                    c = 84 - constantMessage[i]; //t
+                    d = 79 - constantMessage[i]; //o
+                    e = 69 - constantMessage[i]; //e
+                    f = 83 - constantMessage[i]; //s
                     
-                        printf ("message[i] = %d\n", constantMessage[i]);
-                        printf ("a: %d, b: %d, c: %d d: %d e: %d f: %d\n", a, b, c, d, e, f);
-                        
-                        
-                        
-                        encryptRotation(a, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", a, message);
-                        fprintf(out, "%s", message);
-                        
-                        encryptRotation(b, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", b, message);
-                        fprintf(out, "%s", message);
-                        
-                        encryptRotation(c, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", c, message);
-                        fprintf(out, "%s", message);
-                        
-                        encryptRotation(d, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", d, message);
-                        fprintf(out, "%s", message);
-                        
-                        encryptRotation(e, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", e, message);
-                        fprintf(out, "%s", message);
-                        
-                        encryptRotation(f, constantMessage, message);
-                        printf("\nThe rotation could be %d: %s\n", f, message);
-                        fprintf(out, "%s", message);
-                        
-                        counter++;
-                        
-                    }
+                    printf ("message[i] = %d\n", constantMessage[i]);
+                    printf ("a: %d, b: %d, c: %d d: %d e: %d f: %d\n", a, b, c, d, e, f);
+                    
+                    
+                    
+                    encryptRotation(a, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", a, message);
+                    fprintf(out, "%s", message);
+                    
+                    encryptRotation(b, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", b, message);
+                    fprintf(out, "%s", message);
+                    
+                    encryptRotation(c, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", c, message);
+                    fprintf(out, "%s", message);
+                    
+                    encryptRotation(d, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", d, message);
+                    fprintf(out, "%s", message);
+                    
+                    encryptRotation(e, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", e, message);
+                    fprintf(out, "%s", message);
+                    
+                    encryptRotation(f, constantMessage, message);
+                    printf("\nThe rotation could be %d: %s\n", f, message);
+                    fprintf(out, "%s", message);
+                    
+                    counter++;
+                    
                 }
             }
         }
+    }
     
-
+    
 }
 
 /*---Functions---*/
@@ -129,4 +129,3 @@ void encryptRotation(int x, char *strng, char *outstrng)
         }
     }
 }
-]
