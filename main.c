@@ -7,15 +7,15 @@ void textCaps(char *strng);
 void encryptRotation(int x, char *strng);
 /*---This function takes encrypted text and the known value it was rotated by to decode for original text---*/
 void decryptRotation(int x, char *strng);
-/* ---This function takes a key string and a message string to encode the message---*/
+/* ---This function takes a key string and a message string to encode the message using the substitution method---*/
 void encryptSubstitution(char *key, char *strng);
-/* ---This function takes a key string and a message string to decode the message---*/
+/* ---This function takes a key string and a message string to decode the message using the substitution method---*/
 void decryptSubstitution(char *key, char *strng);
               
 /*---Main---*/
 int main()
 {
-    int c;
+    int c; 
     int x;
     char z;
     printf("\n\n/-------------------------------/\n");
