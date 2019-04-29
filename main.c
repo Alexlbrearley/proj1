@@ -59,7 +59,7 @@ int main()
     textCaps(outStrng); //convert to all caps
     printf("\nFile contains: %s", outStrng); //original file contents
     printf("\n/-------------------------------/\n");
-    printf("\nThis program can perform following operations:\n\n 1. Rotation Cipher\n 2. Substitution Cipher\n 3. Decrypt Rotation Without Key\n\n Please enter an option: ");
+    printf("\nThis program can perform following operations:\n\n 1. Rotation Cipher\n 2. Substitution Cipher\n 3. Decrypt Rotation Without Key\n\nPlease enter an option: ");
     scanf("%d", &c);
     /*---Rotation Program---*/
     if (c == 1)
@@ -149,7 +149,7 @@ int main()
         {
             encryptSubstitution(keyStrng, outStrng);
             fprintf(out, "%s", outStrng);
-            printf("\nThe encrypted outStrng is: %s\n", outStrng);
+            printf("\nThe encrypted message is: %s\n", outStrng);
             printf("\nWould you like to overwrite %s? with the encrypted text? y or n: ", inputName); //option to overwrite the input file so that the decrypt function can be tested
             scanf("%s", &z);
             if (z == 'y')
@@ -167,7 +167,7 @@ int main()
         {
             decryptSubstitution(keyStrng, outStrng);
             fprintf(out, "%s", outStrng);
-            printf("\nThe encrypted outStrng is: %s\n", outStrng);
+            printf("\nThe encrypted message is: %s\n", outStrng);
             printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file
             scanf("%s", &z);
             if (z == 'y')
@@ -194,6 +194,8 @@ int main()
         rotationGuess(strng);
     }
     /*---End Main---*/
+    else
+        printf ("\nSorry, %d is not an option.\n", c);
     fclose(in);
     fclose(out);
     printf("\n\n/-------------------------------/\n");
@@ -361,7 +363,7 @@ void rotationGuess(char *strng)
         }
     }
     printf("\n\n/-------------------------------/\n");
-    printf("You can now find which rotation value worked, run the program again and select decrypt rotation to decode the original outStrng\n");
+    printf("You can now find which rotation value worked, run the program again and select decrypt rotation to decode the original message\n");
 }
 //------------------------------------------------------
 void decryptRotationNoKey(int x, char *strng, char *outStrng)
