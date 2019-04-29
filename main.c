@@ -27,7 +27,7 @@ int main()
     printf("\n\n/-------------------------------/\n");
     printf("/---Welcome to Cipher program---/\n");
     printf("/-------------------------------/\n\n");
-    printf("To use this program, a file containing a outStrng to encrypt or decrypt needs to be opened.\n\n");
+    printf("To use this program, a file containing a message, to encrypt or decrypt, needs to be opened.\n\n");
     /*---File I/O---*/
     int i;
     char outStrng[1000];
@@ -84,6 +84,11 @@ int main()
                 scanf("%s", &z);
                 if (z == 'y')
                 {
+                    printf("\nAre you sure? y or n: ");
+                    scanf("%s", &z);
+                }
+                if (z == 'y')
+                {
                     in = fopen(inputName, "w");
                     fprintf(in, "%s", outStrng);
                 }
@@ -104,6 +109,11 @@ int main()
                 fprintf(out, "%s", outStrng);
                 printf("\nWould you like to overwrite %s with the encrypted text? y or n: ", inputName); //option to overwrite the input file
                 scanf("%s", &z);
+                if (z == 'y')
+                {
+                    printf("\nAre you sure? y or n: ");
+                    scanf("%s", &z);
+                }
                 if (z == 'y')
                 {
                     in = fopen(inputName, "w");
@@ -144,6 +154,11 @@ int main()
             scanf("%s", &z);
             if (z == 'y')
             {
+                printf("\nAre you sure? y or n: ");
+                scanf("%s", &z);
+            }
+            if (z == 'y')
+            {
                 in = fopen(inputName, "w");
                 fprintf(in, "%s", outStrng);
             }
@@ -157,6 +172,11 @@ int main()
             scanf("%s", &z);
             if (z == 'y')
             {
+                printf("\nAre you sure? y or n: ");
+                scanf("%s", &z);
+            }
+            if (z == 'y')
+            {
                 in = fopen(inputName, "w");
                 fprintf(in, "%s", outStrng);
             }
@@ -164,13 +184,15 @@ int main()
         fclose(key);
     }
     /*---Rotation Without Key---*/
-    char strng[1000];
-    for (i=0; i<1000; i++)
+    else if (c == 3)
     {
-        strng[i] = outStrng[i];
+        char strng[1000];
+        for (i=0; i<1000; i++)
+        {
+            strng[i] = outStrng[i];
+        }
+        rotationGuess(strng);
     }
-    rotationGuess(strng);
-    
     /*---End Main---*/
     fclose(in);
     fclose(out);
@@ -298,7 +320,7 @@ void rotationGuess(char *strng)
                         r = r + 26;
                     
                     printf ("New loop\n");
-                    
+                    fprintf (out, "New loop\n");
                     
                     decryptRotationNoKey(l, strng, outStrng);
                     printf("\nThe rotation could be %d: %s\n", l, outStrng);
