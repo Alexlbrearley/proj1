@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
+/*---Welcome! This program can preform 3 tasks - Encryption/Decryption of text with rotation or substitution given the rotation amount or key; or attempted decryption of text that was encrypted using a rotation cypher.---*/
+
+
+
 /*---This function takes the input text and converts everything to capital---*/
 void textCaps(char *strng);
 /*---This function takes a variable x to rotate the value for each character---*/
@@ -21,18 +25,18 @@ void decryptRotationNoKey(int x, char *strng, char *outStrng);
 /*---Main---*/
 int main()
 {
-    int c;
-    int x;
-    char z;
+    int c; //used for menue selections
+    int x; //used for selections
+    char z; // used for menu selections (y or n)
     printf("\n\n/-------------------------------/\n");
     printf("/---Welcome to Cipher program---/\n");
     printf("/-------------------------------/\n\n");
     printf("To use this program, a file containing a message, to encrypt or decrypt, needs to be opened.\n\n");
     /*---File I/O---*/
-    int i;
-    char outStrng[1000];
+    int i; //counter
+    char outStrng[1000]; //input file text copied here
     char ch;
-    FILE *in, *out, *key;
+    FILE *in, *out, *key; //files accessed by the program
     char inputName[30];
     printf("Enter input file name: ");
     scanf("%s", inputName);
@@ -71,7 +75,7 @@ int main()
         {
             printf("\nEnter a rotation amount between 1 and 26: ");
             scanf("%d", &x);
-            if (x < 1 || x > 26)
+            if (x < 1 || x > 26) //make sure selection is correct
             {
                 printf("\n ERROR: The rotation must be between 1 and 26, you entered %d\n", x);
             }
@@ -98,7 +102,7 @@ int main()
         {
             printf("\nEnter the rotation amount between 1 and 26 that the text was encrypted with: ");
             scanf("%d", &x);
-            if (x < 1 || x > 26)
+            if (x < 1 || x > 26) // prints error if user inputs invalid value
             {
                 printf("\n ERROR: The rotation must be between 1 and 26, you entered %d\n", x);
             }
@@ -140,7 +144,7 @@ int main()
                 break;
             keyStrng[i] = ch;
         }
-        textCaps(keyStrng);
+        textCaps(keyStrng); //converts key letters to all caps
         
         printf("\nFound key: %s\n", keyStrng);
         printf("\nEnter 1 to encrypt or 2 to decrypt: ");
@@ -159,8 +163,8 @@ int main()
             }
             if (z == 'y')
             {
-                in = fopen(inputName, "w");
-                fprintf(in, "%s", outStrng);
+                in = fopen(inputName, "w"); //reopens input file as write - deletes existing text
+                fprintf(in, "%s", outStrng); //prints new text to file
             }
         }
         else if(q == 2)
@@ -177,7 +181,7 @@ int main()
             }
             if (z == 'y')
             {
-                in = fopen(inputName, "w");
+                in = fopen(inputName, "w"); 
                 fprintf(in, "%s", outStrng);
             }
         }
@@ -294,7 +298,7 @@ void rotationGuess(char *strng)
         {
             if (strng[i] >= 65 && strng[i] <=90)
             {
-                if (strng[i] == strng[(i)+1])
+                if (strng[i] == strng[(i)+1]) // finding possible solutions based off of double letters
                 {
                     l = 76 - strng[i];
                     if (l <= 0)
